@@ -1,0 +1,41 @@
+convert_videos.py
+
+This utility will convert all my videos from avi to mp4 files.
+The command line is straight forward:
+
+./ffmpeg -i ~/Desktop/videos/2006-03-26_12.38.38_divers-2006.avi OUTPUT2.mp4
+
+We'll need to preserve the directory structure.
+
+How to process the following file?
+
+f = "/Volumes/Videos/video-2/2006-08-17 12.15.23
+annee-2006_parc_attraction_vacances_ete_france_miniature.avi"
+
+source_directory = "/Volumes/Videos"
+output_dir = "/User/brouchouse/Videos"
+
+directory = os.path.dirname(f)
+= /Volumes/Videos/video-2/
+
+filename = os.path.basename(f)
+= 2006-08-17 12.15.23
+annee-2006_parc_attraction_vacances_ete_france_miniature.avi"
+
+Create a directory in the output_dir:
+dest_dir = output_dir + "/" + directory[len(source_directory):]
+
+Copy the file
+cp directory + filename -> dest_dir + "/" + filename.replace("avi", "mpg")
+ 
+Convert the file
+ffmpeg -i ~/Desktop/videos/2006-03-18_16.15.17_divers-2006.avi OUTPUT.mp4
+
+This link explains how to preserve the quality of the image using ffmpeg
+https://superuser.com/questions/525928/ffmpeg-keeping-quality-during-conversion
+Use the flags: -c:v libx264 -crf 20 -c:a aac -strict -2
+./ffmpeg -i /Users/brouchouse/Desktop/videos/untitled\ folder/2006-03-25\ 13.06.10\ divers-2006.avi -c:v libx264 -crf 20 -c:a aac -strict -2 "test.mp4
+
+If you had -ss 60 -t 60, you will just convert an excerpt of the input file
+that starts at 60s and lasts 60s.
+
